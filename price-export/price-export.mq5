@@ -30,6 +30,8 @@ Purpose: Price exporting tool for Metatrader 5.
 
 Version control
 16 Aug 2023 Duncan Camilleri           Initial development
+18 Aug 2023 Duncan Camilleri           Corrected use of volume
+18 Aug 2023 Duncan Camilleri           Add a header.
 */
 #property description   "Price export tool.\n"
                         "\n"
@@ -39,14 +41,12 @@ Version control
                         "open, high, low, close, volume\n"
 #property copyright     "Copyright 2023, Duncan Camilleri."
 #property link          "http://www.dnc77.com"
-#property version       "1.00"
+#property version       "1.01"
 #property strict
 
 #define product         "Price export"
 
 #define FILEWRITEFLAGS  (FILE_TXT | FILE_ANSI | FILE_WRITE | FILE_READ)
-
-
 
 //
 // INCLUDES.
@@ -376,7 +376,21 @@ bool PriceFile::load()
    emptyLast();
    mHandle = FileOpen(mFilename, FILE_TXT | FILE_ANSI | FILE_READ, "");
    if (INVALID_HANDLE == mHandle) {
-      // No current data stored...
+      // No current file... Create with a header.
+      mHandle = FileOpen(mFilename, FILEWRITEFLAGS, "");
+      if (INVALID_HANDLE == mHandle) {
+         Print(gLogMsgHdr + "cannot create file!");
+         return false;
+      }
+      
+      // Write a header.
+      FileWriteString(mHandle,
+         "\"Date\",\"Open\",\"High\",\"Low\",\"Close\",\"Volume\"\r\n"
+      );
+      FileClose(mHandle);
+      mHandle = INVALID_HANDLE;
+
+      // Success.
       return true;
    }
 
@@ -478,7 +492,7 @@ bool PriceFile::update()
       mLastRecord.mHigh = rates[n].high;
       mLastRecord.mLow = rates[n].low;
       mLastRecord.mClose = rates[n].close;
-      mLastRecord.mVolume = rates[n].real_volume;
+      mLastRecord.mVolume = rates[n].tick_volume;
       
       // Write a csv entry.
       string csvLine = RecordToString(mLastRecord);
