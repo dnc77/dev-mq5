@@ -1,5 +1,5 @@
 # dev-mq5
-This repository hosts a subset of MQL 5 tools to be used for trading with Meta Trader 5. 
+This repository hosts a subset of MQL 5 tools which can be used for trading purposes using Metatrader 5. 
 
 **Except as represented in this agreement, all work is provided ​“AS IS”. Other than as provided in this agreement, we make no other warranties, express or implied, and hereby disclaim all implied warranties, including any warranty of merchantability and warranty of fitness for a particular purpose.**
 
@@ -8,7 +8,7 @@ These are the tools available in this repository:
 ## Price Export
 
 Price export is an expert advisor which aims to export prices periodically to a file. Files are stored in `MQL5\Files`.
-The filename used will contain the symbol name followed by the time period. For example, if this is running on an `AUDUSD` chart and the 5 minute time frame has been selected for exporting, you will have a file `MQL5\Files\PriceExport-AUDUSD.a_M5.csv` provided the name of the symbol us `AUDUSD.a` in your platform.
+The filename used will contain the symbol name followed by the time period. For example, if this is running on an `AUDUSD` chart and the 5 minute time frame has been selected for exporting, you will have a file `MQL5\Files\PriceExport-AUDUSD.a_M5.csv` provided the name of the symbol is `AUDUSD.a` in your platform.
 
 This tool is very safe to use. In case of any issues or difficulties, do not hesitate to reach out. This is still in beta phase.
 
