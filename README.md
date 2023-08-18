@@ -10,6 +10,8 @@ These are the tools available in this repository:
 Price export is an expert advisor which aims to export prices periodically to a file. Files are stored in `MQL5\Files`.
 The filename used will contain the symbol name followed by the time period. For example, if this is running on an `AUDUSD` chart and the 5 minute time frame has been selected for exporting, you will have a file `MQL5\Files\PriceExport-AUDUSD.a_M5.csv` provided the name of the symbol is `AUDUSD.a` in your platform.
 
+To export multiple timeframe, this advisor should only be active in one timeframe at a time. There will be the option to choose which timeframes to export before the export kicks off just after it is added to the chart window. Do not attempt to add this EA to multiple chart windows of the same symbol as that is not how this EA works and one chart window per symbol is enough.
+
 This tool is very safe to use. In case of any issues or difficulties, do not hesitate to reach out. This is still in beta phase.
 
 ### Usage input parameters:
