@@ -31,7 +31,8 @@ Purpose: Price exporting tool for Metatrader 5.
 Version control
 16 Aug 2023 Duncan Camilleri           Initial development
 18 Aug 2023 Duncan Camilleri           Corrected use of volume
-18 Aug 2023 Duncan Camilleri           Add a header.
+18 Aug 2023 Duncan Camilleri           Add a header
+19 Aug 2023 Duncan Camilleri           Customize update frequency
 */
 #property description   "Price export tool.\n"
                         "\n"
@@ -41,7 +42,7 @@ Version control
                         "open, high, low, close, volume\n"
 #property copyright     "Copyright 2023, Duncan Camilleri."
 #property link          "http://www.dnc77.com"
-#property version       "1.01"
+#property version       "1.02"
 #property strict
 
 #define product         "Price export"
@@ -120,6 +121,7 @@ protected:
 input DateFmt iDateFmt = Y4M2D2H2M2S2AP_SEP;       // Date format:
 input int iPastCandles = 200;                      // Past candles:
 input bool iShowGapRecord = true;                  // Show gap record:
+input int iUpdateFreq = 1;                         // Update frequency(mins.):
 input bool iM1;                                    // Export M1 data:
 input bool iM5;                                    // Export M5 data:
 input bool iM15;                                   // Export M15 data:
@@ -132,6 +134,7 @@ input bool iW1;                                    // Export W1 data:
 // App globals.
 string gLogMsgHdr = "priceexport msg: ";           // Log message header
 CArrayObj gPriceFiles;
+int gUpdateFreq = iUpdateFreq;
 
 // Constants
 datetime gInvalidTime = D'1970.01.01 00:00';
@@ -656,8 +659,9 @@ int OnInit()
       } while (svrTime.sec != 0);
    }
 
-   // Set timer to run each minute on the 0th second.
-   if (!EventSetTimer(60)) {
+   // Set timer to run each x minutes on the 0th second.
+   if (gUpdateFreq <= 0) gUpdateFreq = 1;
+   if (!EventSetTimer(60 * gUpdateFreq)) {
       Print(gLogMsgHdr + "failed setting export timer!");
       destroyAllPriceFiles();
       return INIT_FAILED;
