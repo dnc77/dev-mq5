@@ -41,7 +41,7 @@ If there is not enough candles to reach the last entry in the file from the curr
 Following on from previously, if a gap record is not desired, turn this to false. By default it's true.
 
 #### Update frequency
-This allows the definition of an update frequency in minutes. This is particularly useful when exporting a lot of data which may not finish wihin the default minute.
+This allows the definition of an update frequency in minutes.
 
 #### Export ??? data
 By default the price export tool is not set to export anything. Here one can choose the time frames to export.
