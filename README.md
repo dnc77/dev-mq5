@@ -45,3 +45,7 @@ This allows the definition of an update frequency in minutes.
 
 #### Export ??? data
 By default the price export tool is not set to export anything. Here one can choose the time frames to export.
+
+### Known limitations:
+1. There is only so much candles that can be downloaded in one go at this stage.
+
