@@ -5,6 +5,14 @@ This repository hosts a subset of MQL 5 tools which can be used for trading purp
 
 These are the tools available in this repository:
 
+## gannswing
+
+This is just a basic Gann Swing indicator for Gann Swing charting. It just needs to be dragged on to the chart and it will draw the swing chart overlayed on top of the pricing candles/bars.
+
+### Some notes
+
+The indicator tries to make use of the previous candle to an outside bar to mark that extra swing but when this cannot be done, it will be skipped. For more details, please **try** to refer to the Swing Charting pdf sheet which gives an idea of how outside bars are handled.
+
 ## Price Export
 
 Price export is an expert advisor which aims to export prices periodically to a file. Files are stored in `MQL5\Files`.
