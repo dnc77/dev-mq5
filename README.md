@@ -1,17 +1,14 @@
 # dev-mq5
 This repository hosts a subset of MQL 5 tools which can be used for trading purposes using Metatrader 5. 
 
-**Except as represented in this agreement, all work is provided ​“AS IS”. Other than as provided in this agreement, we make no other warranties, express or implied, and hereby disclaim all implied warranties, including any warranty of merchantability and warranty of fitness for a particular purpose.**
+**All work is provided ​“AS IS”. We make no other warranties, express or implied, and hereby disclaim all implied warranties, including any warranty of merchantability and warranty of fitness for a particular purpose.**
 
 These are the tools available in this repository:
 
 ## gannswing
 
 This is just a basic Gann Swing indicator for Gann Swing charting. It just needs to be dragged on to the chart and it will draw the swing chart overlayed on top of the pricing candles/bars.
-
-### Some notes
-
-The indicator tries to make use of the previous candle to an outside bar to mark that extra swing but when this cannot be done, it will be skipped. For more details, please **try** to refer to the Swing Charting pdf sheet which gives an idea of how outside bars are handled.
+For more information refer to the readme on under `gannswing`.
 
 ## Price Export
 
