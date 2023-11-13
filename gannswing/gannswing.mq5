@@ -29,6 +29,7 @@ Version control
 29 Sep 2023 Duncan Camilleri           Initial development
 20 Oct 2023 Duncan Camilleri           Introducing price and bar filtering
 11 Nov 2023 Duncan Camilleri           Finalized filtering support
+13 Nov 2023 Duncan Camilleri           Added custom swing label
 */
 
 #property description   "Gann Swing.\n"
@@ -36,7 +37,7 @@ Version control
                         "Draws swing chart on MT5.\n"
 #property copyright     "Copyright (C) 2023 Duncan Camilleri."
 #property link          "http://www.dnc77.com"
-#property version       "2.02"
+#property version       "2.03"
 
 #property indicator_chart_window
 #property indicator_buffers 2
@@ -51,6 +52,7 @@ Version control
 #property strict
 
 // Inputs
+input string iGannLabel = "gannswing[untitled]";   // Indicator label:
 input int iBarFilter = 1;                          // [filter] bars per swing:
 input double iPriceFilter = 0.000;                 // [filter] price:
 input bool iSwingOnPrevBreak = false;              // Swing on break of prev.:
@@ -147,6 +149,9 @@ int OnCalculate(const int rates_total, const int prev_calculated,
       );
       return rates_total;
    }
+
+   // Set label.
+   PlotIndexSetString(0, PLOT_LABEL, iGannLabel);
 
    // Go through each candle.
    for (int n = 0; n < rates_total; ++n) {

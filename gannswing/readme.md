@@ -8,6 +8,10 @@ This indicator allows for the plotting of Gann swings on the Metatrader chart.
 
 These are the available options for the Gann Swing chart indicator:
 
+### Indicator label
+
+Defines the label to use for the indicator data.
+
 ### [filter] bars per swing
 
 This adds a filter to the swing chart to not swing until a number of consecutive swings have been reached. In other words, if the filter is set to 2, the swing will only happen whenever two consecutive bars swing up. This has to be a number greater than 0.
@@ -27,6 +31,11 @@ This feature is particularly useful when there is a bars per swing filter set. W
 | 1.00      | initial development                                          |
 | 1.01      | introduced price filtering                                   |
 | 2.02      | introduced full bar and price filtering support              |
+| 2.03      | custom label support                                         |
+
+### Version 2.03 release notes
+
+Added a quick support feature to allow for a custom label. This was a quick add which may be reviewed later.
 
 ### Version 2.02 release notes
 
